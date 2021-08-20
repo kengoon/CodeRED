@@ -1,0 +1,21 @@
+ScreenManager:
+    Screen:
+        name: "init"
+        BoxLayout:
+            orientation: "vertical"
+            MDLabel:
+                text: f"[color=#000000BB]Code[/color]-RED {icon('nearby_error')}"
+                color: app.theme_cls.primary_color
+                halign: "center"
+                markup: True
+                font_style: "H3"
+            BoxLayout:
+                size_hint_y: .4
+                orientation: "vertical"
+                MDProgressBar:
+                    id: spinner
+                    type: "determinate"
+                    size_hint_x:.5
+                    pos_hint:{"center_x": .5}
+                    on_kv_post:
+                        self.start()
