@@ -1,0 +1,35 @@
+<Login>:
+    name: "login"
+    MDBoxLayout:
+        orientation: "vertical"
+        md_bg_color: 1, 1, 1, 1
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: dp(20)
+            spacing: dp(20)
+            md_bg_color: app.theme_cls.primary_color
+            radius: 0, 0, dp(150), dp(150)
+            MDLabel:
+                text: "Login"
+                halign: "center"
+                color: 1, 1, 1, 1
+                bold: True
+                font_style: "H4"
+                size_hint_y: .5
+            MDBoxLayout:
+                orientation: "vertical"
+                spacing: dp(35)
+                padding: dp(20), dp(10), dp(20), dp(100)
+                radius: 0, 0, dp(150), dp(150)
+                M_CardTextField:
+                    radius: dp(30)
+                    icon_left: "account-outline"
+                    icon_left_color: app.theme_cls.disabled_hint_text_color
+                    hint_text: "Email"
+                M_CardTextField:
+                    radius: dp(30)
+                    icon_left: "lock-outline"
+                    icon_left_color: app.theme_cls.disabled_hint_text_color
+                    hint_text: "Password"
+        MDBoxLayout:
+            size_hint_y: .75
