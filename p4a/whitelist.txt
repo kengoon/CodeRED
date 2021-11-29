@@ -1,0 +1,14 @@
+*.py
+*.png
+*.jpg
+*.kv
+*.atlas
+*.html
+*.js
+*.css
+*.woff
+*.woff2
+*.svg
+*.ttf
+*.eot
+*.otf

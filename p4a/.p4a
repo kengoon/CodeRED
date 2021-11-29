@@ -1,0 +1,37 @@
+--private .
+--package=org.mindset.codered
+--dist_name codered
+--name="Code RED"
+--version=0.1
+--bootstrap=sdl2
+--requirements=python3,kivy==master,https://github.com/kivymd/KivyMD/archive/refs/heads/master.zip,pillow,sdl2_ttf==2.0.15
+--permission=INTERNET
+--permission=READ_CONTACTS
+--permission=WRITE_CONTACTS
+--permission=READ_PROFILE
+--permission=WRITE_PROFILE
+--permission=READ_EXTERNAL_STORAGE
+--permission=WRITE_EXTERNAL_STORAGE
+--permission=CAPTURE_AUDIO_OUTPUT
+--permission=RECORD_AUDIO
+--permission=ACCESS_NETWORK_STATE
+--permission=CAMERA
+--permission=FOREGROUND_SERVICE
+--permission=CAPTURE_VIDEO_OUTPUT
+--permission=CALL_PHONE
+--permission=RECEIVE_BOOT_COMPLETED
+--permission=ACCESS_WIFI_STATE
+--sdk-dir=/home/kengo/Android/Sdk
+--android_api 30
+--ndk-dir=/home/kengo/.buildozer/android/platform/android-ndk-r20b
+--ndk-api 21
+--arch=arm64-v8a
+--arch=armeabi-v7a
+--service=Udalla:service.py
+--release
+--whitelist=./whitelist.txt
+--orientation=portrait
+--enable-androidx
+--window
+--icon=assets/image/icon.png
+--presplash=assets/image/icon.png
