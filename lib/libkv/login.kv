@@ -22,14 +22,27 @@
                 padding: dp(20), dp(10), dp(20), dp(100)
                 radius: 0, 0, dp(150), dp(150)
                 M_CardTextField:
-                    radius: dp(30)
+                    id: email
+                    elevation: 0
+                    radius: dp(15)
                     icon_left: "account-outline"
                     icon_left_color: app.theme_cls.disabled_hint_text_color
                     hint_text: "Email"
                 M_CardTextField:
-                    radius: dp(30)
+                    id: password
+                    elevation: 0
+                    radius: dp(15)
                     icon_left: "lock-outline"
                     icon_left_color: app.theme_cls.disabled_hint_text_color
                     hint_text: "Password"
-        MDBoxLayout:
+        RelativeLayout:
             size_hint_y: .75
+            CardButton:
+                text: "LOGIN"
+                pos_hint: {"center_y": .5, "center_x": .5}
+
+            MDTextButton:
+                text: "click to create an account....."
+                color: app.theme_cls.primary_color
+                pos_hint: {"center_y": .2, "center_x": .5}
+                on_release: root.manager.current = "signup"

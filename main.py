@@ -1,20 +1,15 @@
-print("hello")
-from kivy.config import Config
-Config.set("kivy", "log_level", "debug")
+from sys import platform
+if platform == "win32":
+    from os import environ
+    environ["KIVY_GL_BACKEND"] = "angle_sdl2"
 from kivy.core.window import Window
 import os
 from time import sleep
-from jnius import autoclass
-print("yea")
 from kivy.factory import Factory  # NOQA
-print("hi")
 from kivy.clock import Clock
-print("wiwo")
 from kivymd.app import MDApp
-print("wawi")
 from kivy.lang import Builder
 from kivy.config import Config
-print("hi")
 from lib.widgetpy.m_cardtextfield import M_CardTextField
 from tools.iconfonts import register
 from multiprocessing.dummy import Process
@@ -30,8 +25,7 @@ r("M_CardTextField", cls=M_CardTextField)
 class CodeRED(MDApp):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.theme_cls.primary_palette = "Red"
-        self.theme_cls.primary_hue = "A700"
+        self.theme_cls.primary_palette = "Pink"
         self.theme_cls.font_styles.update(
             {
                 "H1": [f"{font_folder}DINAlternate-bold", 96, False, -1.5],
@@ -61,7 +55,7 @@ class CodeRED(MDApp):
         Process(target=self.initiate_load_sequence).start()
 
     def initiate_load_sequence(self):
-        # sleep(3)
+        sleep(3)
         self.load_screens()
         self.load_widgets()
         Clock.schedule_once(
@@ -101,6 +95,7 @@ class CodeRED(MDApp):
 
     @staticmethod
     def start_service():
+        from jnius import autoclass
         service = autoclass("org.mindset.codered.ServiceCodered")
         mActivity = autoclass("org.kivy.android.PythonActivity").mActivity
         service.start(mActivity, "")

@@ -1,0 +1,17 @@
+<CardButton>:
+    elevation: 6
+    text: ""
+    radius: [dp(5)]
+    size_hint: None, None
+    size: self.minimum_size
+    text_color: 1, 1, 1, 1
+    font_style: "H6"
+    md_bg_color: app.theme_cls.primary_color
+    ripple_behavior: True
+    MDLabel:
+        text: root.text
+        padding: dp(30), dp(10)
+        adaptive_size: True
+        markup: True
+        font_style: root.font_style
+        color: root.text_color

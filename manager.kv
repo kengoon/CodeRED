@@ -9,14 +9,15 @@ ScreenManager:
                 halign: "center"
                 markup: True
                 font_style: "H3"
-            BoxLayout:
+            RelativeLayout:
                 size_hint_y: .4
-                orientation: "vertical"
                 MDProgressBar:
                     id: spinner
                     type: "determinate"
                     size_hint_x:.5
-                    pos_hint:{"center_x": .5}
+                    size_hint_y: None
+                    height: dp(2)
+                    pos_hint:{"center_x": .5, "center_y": .5}
                     on_kv_post:
                         self.start()
 

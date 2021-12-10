@@ -62,7 +62,7 @@ Builder.load_string(
     MDCard:
         id: card
         ripple_behavior: root.card_ripples
-        radius: dp(10)
+        radius: [dp(10)]
         padding: root.card_padding
         size_hint_y: None 
         height: self.minimum_height

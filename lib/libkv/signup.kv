@@ -1,0 +1,61 @@
+<Signup>:
+    name: "signup"
+    MDBoxLayout:
+        orientation: "vertical"
+        md_bg_color: app.theme_cls.primary_color
+        MDLabel:
+            size_hint_y: .3
+            text: "Sign Up"
+            halign: "center"
+            font_style: "H4"
+            color: 1, 1, 1, 1
+        MDBoxLayout:
+            radius: [dp(120), dp(120), 0, 0]
+            md_bg_color: 1, 1, 1, 1
+            ScrollView:
+                effect_cls: ScrollEffect
+                MDList:
+                    padding: dp(20), dp(60), dp(20), dp(20)
+                    spacing: dp(15)
+                    M_CardTextField:
+                        elevation: 6
+                        radius: dp(15)
+                        icon_left: "account-outline"
+                        icon_left_color: app.theme_cls.disabled_hint_text_color
+                        hint_text: "Name"
+
+                    M_CardTextField:
+                        elevation: 6
+                        radius: dp(15)
+                        icon_left: "account-outline"
+                        icon_left_color: app.theme_cls.disabled_hint_text_color
+                        hint_text: "Email"
+
+                    M_CardTextField:
+                        elevation: 6
+                        radius: dp(15)
+                        icon_left: "lock-outline"
+                        icon_left_color: app.theme_cls.disabled_hint_text_color
+                        hint_text: "Password"
+
+                    M_CardTextField:
+                        elevation: 6
+                        radius: dp(15)
+                        icon_left: "lock-outline"
+                        icon_left_color: app.theme_cls.disabled_hint_text_color
+                        hint_text: "Confirm Password"
+
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        spacing: dp(30)
+                        padding: [0, dp(40), 0, 0]
+                        adaptive_height: True
+                        CardButton:
+                            text: "SIGN UP"
+                            pos_hint: {"center_y": .5, "center_x": .5}
+
+                        MDTextButton:
+                            text: "have an account? Login!!!"
+                            color: app.theme_cls.primary_color
+                            pos_hint: {"center_y": .2, "center_x": .5}
+                            on_release: root.manager.current = "login"
