@@ -14,6 +14,12 @@ from lib.widgetpy.m_cardtextfield import M_CardTextField
 from tools.iconfonts import register
 from multiprocessing.dummy import Process
 
+
+import bcrypt
+
+import Codered_Sqlalchemy
+
+
 font_folder = "assets/font/"
 register("icon", f"{font_folder}MaterialIconsRound-Regular.otf", f"{font_folder}googleIconRound.fontd")
 Config.set("kivy", "exit_on_escape", "0")
@@ -91,7 +97,34 @@ class CodeRED(MDApp):
         libkv = os.listdir(self.KIVY_WIDGET_FILES)
         for kv in libkv:
             Builder.load_file(f"{self.KIVY_WIDGET_FILES}{kv}")
-        # --------------------------------------- #
+        # --------------------------------------- # 
+    
+    def sign_up(self):
+        """use sqlite3 tabase to store user information"""
+        name = self.root.ids.manager.children[0].screens[1].ids["name"].text 
+        email = self.root.ids.manager.children[0].screens[1].ids["email"].text 
+        password = self.root.ids.manager.children[0].screens[1].ids["password"].text 
+        confir_pass = self.root.ids.manager.children[0].screens[1].ids["confir_pass"].text 
+        
+        #print(email)
+        Codered_Sqlalchemy.store_user_credential(name, email, password)
+    
+
+    def login(self):
+        email = self.root.ids.manager.children[0].screens[0].ids["email"].text 
+        current_password = self.root.ids.manager.children[0].screens[0].ids["password"].text 
+
+        req = Codered_Sqlalchemy.pull_user_credential(email)#pull hash
+        
+        hash = req[0]["password"]#the result is dict in list
+
+        if bcrypt.checkpw(bytes(current_password, encoding='utf-8'), hash):
+            print("Welcome back!") 
+        
+        else:
+            print("incorret password or username!")
+
+        
 
     @staticmethod
     def start_service():
