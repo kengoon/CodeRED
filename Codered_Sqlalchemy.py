@@ -39,13 +39,12 @@ def perform_select(sql, params):
 def pull_user_credential(email):
     sql = "SELECT password FROM user_credential WHERE email=?"
     params = (email,)
-    query = perform_select(sql, params) 
-    return query
+    return perform_select(sql, params)
 
     
 
 def store_user_credential(username, email, password):
-    
+
     sql = "INSERT INTO user_credential (username, email, password) VALUES(?,?,?)" 
     password = bcrypt.hashpw(bytes(password, encoding="utf-8"), bcrypt.gensalt())#generate hash
     sql_params = (username, email, password)
