@@ -49,5 +49,6 @@ def store_user_credential(username, email, password):
     password = bcrypt.hashpw(bytes(password, encoding="utf-8"), bcrypt.gensalt())#generate hash
     sql_params = (username, email, password)
     perform_insert(sql, sql_params)
+    return True
 
     
