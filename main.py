@@ -1,4 +1,7 @@
 from sys import platform
+
+from lib.libpy.login import User
+
 if platform == "win32":
     from os import environ
     environ["KIVY_GL_BACKEND"] = "angle_sdl2"
@@ -100,31 +103,12 @@ class CodeRED(MDApp):
         # --------------------------------------- # 
     
     def sign_up(self):
-        """use sqlite3 tabase to store user information"""
-        name = self.root.ids.manager.children[0].screens[1].ids["name"].text 
-        email = self.root.ids.manager.children[0].screens[1].ids["email"].text 
-        password = self.root.ids.manager.children[0].screens[1].ids["password"].text 
-        confir_pass = self.root.ids.manager.children[0].screens[1].ids["confir_pass"].text 
-        
-        #print(email)
-        Codered_Sqlalchemy.store_user_credential(name, email, password)
+        User(self).register()#self is argument of init parament
     
 
     def login(self):
-        email = self.root.ids.manager.children[0].screens[0].ids["email"].text 
-        current_password = self.root.ids.manager.children[0].screens[0].ids["password"].text 
+        User(self).login()#self is argument of init parament
 
-        req = Codered_Sqlalchemy.pull_user_credential(email)#pull hash
-        
-        hash = req[0]["password"]#the result is dict in list
-
-        if bcrypt.checkpw(bytes(current_password, encoding='utf-8'), hash):
-            print("Welcome back!") 
-        
-        else:
-            print("incorret password or username!")
-
-        
 
     @staticmethod
     def start_service():
