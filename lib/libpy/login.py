@@ -19,34 +19,31 @@ class User:
         """use sqlite3 database to store user information"""
         register_screen =  self.init.root.ids.manager.children[0].screens[1]
 
-        name = register_screen.ids["name"].text 
-        email = register_screen.ids["email"].text 
-        password = register_screen.ids["password"].text 
+        name = register_screen.ids["name"].text
+        email = register_screen.ids["email"].text
+        password = register_screen.ids["password"].text
         confir_pass = register_screen.ids["confir_pass"].text 
-        
+
         if len(str(name.strip())) < 3:
             print("your username must have 3 characters in at least")
             return false
-        
+
         if re.search("[@,#,$]", name):
             print("this name is not allowed")
             return false
-        
-        if email:
-            pass
-        
+
         if len(password.strip()) < 4:
             print("your password must have 4 characters in at least")
             return false 
 
-        if not (password == confir_pass):
+        if password != confir_pass:
             print("your password and confirm password not equal")
             return false
 
 
         if Codered_Sqlalchemy.store_user_credential(name, email, password):
             print(f"you have been registered {name}")
-        
+
         else:
             print("error!, everyone has a bad day, contact us coderedteam@codered.org")
     
